@@ -63,7 +63,7 @@ export default {
             encrypted: true,
         })
 
-        window.Echo.channel(`chat.${this.user.id}`).listen('MessageEvent', (e) => {
+        window.Echo.channel(`chat.${this.user.id}.${this.auth.id}`).listen('MessageEvent', (e) => {
             this.messages.push(e.message);
         });
 
@@ -81,10 +81,6 @@ export default {
                 receiver_id: this.user?.id,
                 message: this.newMessage
             }).then(() => {
-                this.messages.push({
-                    message: this.newMessage,
-                    sender_id: this.auth.id
-                })
                 this.newMessage = ''
             })
         }
