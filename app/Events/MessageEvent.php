@@ -26,7 +26,6 @@ class MessageEvent implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            // new Channel('chat.' . $this->message->sender_id),
             new Channel('chat.' . $this->message->receiver_id . '.' . $this->message->sender_id),
             new Channel('chat.' . $this->message->sender_id . '.' . $this->message->receiver_id),
         ];
